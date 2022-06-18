@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">aroundEgyptTask</string>
+    <string name="app_name" translatable="false">AroundEgypt</string>
+    <string name="welcome">Welcome !</string>
+    <string name="description">Now you can explore any experience in 360 degrees and get all the details about it all in one place.</string>
+    <string name="recommended_experiences">Recommended Experiences</string>
+    <string name="most_recent">Most Recent</string>
+    <string name="description_title">Description</string>
+    <string name="search_hint">Try \"Luxor\"</string>
+    <string name="recommended">Recommended</string>
 </resources>
