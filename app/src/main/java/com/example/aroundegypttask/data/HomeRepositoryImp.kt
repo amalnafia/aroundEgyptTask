@@ -23,14 +23,10 @@ class HomeRepositoryImp(
             }.onErrorResumeNext {
                 remoteDataSource.getRecentExperience()
                     .flatMap {
-                        if (it.isError) {
-                            return@flatMap localDataSource.selectExperienceList()
-                        } else {
-                            val result = it.response()?.body()?.data
-                            val response = experienceMapper.map(result!!)
-                            localDataSource.insertAll(response)
-                            return@flatMap Single.just(response)
-                        }
+                        val result = it.response()?.body()?.data
+                        val response = experienceMapper.map(result!!)
+                        localDataSource.insertAll(response)
+                        return@flatMap Single.just(response)
                     }
             }
     }
@@ -46,14 +42,10 @@ class HomeRepositoryImp(
             .onErrorResumeNext {
                 remoteDataSource.getRecommendedExperience()
                     .flatMap {
-                        if (it.isError) {
-                            return@flatMap localDataSource.selectRecommendedExperienceList()
-                        } else {
-                            val result = it.response()?.body()?.data
-                            val response = experienceMapper.map(result!!)
-                            localDataSource.insertAll(response)
-                            return@flatMap Single.just(response)
-                        }
+                        val result = it.response()?.body()?.data
+                        val response = experienceMapper.map(result!!)
+                        localDataSource.insertAll(response)
+                        return@flatMap Single.just(response)
                     }
             }
     }
@@ -63,14 +55,10 @@ class HomeRepositoryImp(
             .onErrorResumeNext {
                 remoteDataSource.getExperienceDetails(id)
                     .flatMap {
-                        if (it.isError) {
-                            return@flatMap localDataSource.selectExperience(id)
-                        } else {
-                            val result = it.response()?.body()?.data
-                            val response = experienceMapper.map(result!!)
-                            localDataSource.insertExperience(response)
-                            return@flatMap Single.just(response)
-                        }
+                        val result = it.response()?.body()?.data
+                        val response = experienceMapper.map(result!!)
+                        localDataSource.insertExperience(response)
+                        return@flatMap Single.just(response)
                     }
             }
     }
